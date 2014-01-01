@@ -1,193 +1,126 @@
-" Vundle设置
-"
-set nocompatible               " be iMproved
-filetype off                   " required!
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-
-" My Bundles here:
-"
-" original repos on github
-Bundle 'tomasr/molokai'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'suan/vim-instant-markdown'
-Bundle 'bling/vim-airline'
-Bundle 'mhinz/vim-startify'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Yggdroot/indentLine'
-Bundle 'hdima/python-syntax'
-Bundle 'majutsushi/tagbar'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'bronson/vim-trailing-whitespace'
-Bundle 'tpope/vim-surround'
-Bundle 'Raimondi/delimitMate'
-Bundle 'scrooloose/syntastic'
-Bundle 'kevinw/pyflakes-vim'
-Bundle 'scrooloose/nerdcommenter'
-
-" vim-scripts repos
-
+" 普通设置
+set nocompatible              " be iMproved
+set autoread                  " 外部修改后自动更新文件
+syntax on                     " 语法高亮
+filetype off                  " required!
+filetype indent on	      " 根据文件类型缩进	
 filetype plugin indent on     " required!
+set incsearch             " incremental search
+set hlsearch              " 高亮搜索结果
+set nu                    " 显示行号
+set cul                   " 高亮当前行
+set autochdir             " 自动切换目录到当前文件的目录
+set nowrap                " 不自动折行
+set guifont=Source\ Code\ Pro\ for\ Powerline:h12       " GUI字体设置
+let mapleader=","         " 绑定<Leader>键
 
-" 主题设置
-syntax enable
-set background=dark
-let g:molokai_original = 1
-colorscheme molokai
+" 平铺视图导航
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
-" UI设置
-set nu
+" 文件编码
+set encoding=utf-8              " vim内部的编码
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbkgb2312,cp936 " 默认新建的文件编码
+set termencoding=utf-8          " 输出到终端的编码
+set fileencoding=utf-8          " 写入文件的编码
+
+" 缩进设置
+set autoindent                " 自动缩进
+set cindent                   " C风格缩进
+set smartindent               " 智能缩进
+
+" 普通文件Tab设置
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" 特殊文件Tab设置
+autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
+autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79
+autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79
+autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
+autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
+
+" 折叠设置
+set foldenable
+set foldmethod=manual         " 手动折叠
+set foldlevel=3
+
+" 括号匹配
+set showmatch
+set matchtime=1               " 匹配高亮时间（单位是十分之一秒）
 " GUI设置
 if has("gui_running")
-    set go=aAce		 " 去掉工具栏和滑动条
-    " set transparency=30  " 透明背景
-    set guifont=Source\ Code\ Pro\ for\ Powerline:h13 " 设置字体
-    set showtabline=2    " 开启自带的tab栏
-    set columns=100      " 设置宽
-    set lines=35         " 设置长
+    set go=aAce
 endif
 
-" Markdown 设置
-let g:vim_markdown_folding_disabled=1
-filetype plugin on
-let g:instant_markdown_slow = 1
+" Vundle 设置
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
 
-" 搜索设置
-set ignorecase		" 忽略大小写
-set smartcase		" 不忽略单词首位大写
-set hlsearch 		" 高亮搜索内容
-set incsearch  		" 即时搜索
-
-" Tab设置
-map <c-w> :tabclose<cr> " Control + W 关闭Tab
-map <c-t> :tabnew<cr> 	" Control + T 打开新Tab
-map <c-n> :tabnext<cr> 	" Control + N 下一个Tab
-map <c-p> :tabNext<cr>	" Control + P 上一个Tab
-
-" 通用设置
-set ai			" 自动缩进
-set bs=2		" 在insert模式下用退格键删除
-set showmatch		" 代码匹配
-set autoread		" 文件自动加载
-set helplang=cn		" 设置帮助语言为中文
-set foldmethod=indent " 代码折叠
-set foldlevel=99
-set cursorline		" 为光标所在行加下划线
-set nowrap          " 不自动折行
-
-" 分屏跳转
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-" Tab键设置
-set expandtab
-set shiftwidth=4
-set tabstop=4
+" Tomorrow 主题设置
+Bundle 'chriskempson/vim-tomorrow-theme'
+colorscheme Tomorrow-Night-Bright
 
 " Airline 设置
-set laststatus=2 	" 总是显示状态行
-set t_Co=256        " 设置颜色
-let g:airline_powerline_fonts = 1 " Airline字体设置
-let g:airline#extensions#tabline#enabled = 1 " Airline状态栏设置
+Bundle 'bling/vim-airline'
+set laststatus=2
+let g:airline_powerline_fonts=1
 
-" Vim-Startify 设置
-" Startify颜色设置
-hi StartifyBracket ctermfg=240
-hi StartifyFooter  ctermfg=111
-hi StartifyHeader  ctermfg=203
-hi StartifyNumber  ctermfg=215
-hi StartifyPath    ctermfg=245
-hi StartifySlash   ctermfg=240
+" CoffeeScript 插件设置
+Bundle 'kchmck/vim-coffee-script'
+autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable     " 代码折叠
 
-" 自定义页首文字
-let g:startify_custom_header = [
-            \ '      __ __                        __      _    _    ___           ',
-            \ '     / //_/__  ______________      \ \    ( )  | |  / (_)___ ___   ',
-            \ '    / ,< / _ \/ ___/ ___/ __ \      \ \   |/   | | / / / __ `__ \  ',
-            \ '   / /| /  __(__  ) /__/ /_/ /       \ \       | |/ / / / / / / /  ',
-            \ '  /_/ |_\___/____/\___/\____/         \_\      |___/_/_/ /_/ /_/   ',
-            \ '',
-            \ '',
-            \ ]
+" YouCompleteMe 自动补全，感觉超级好用啊！
+Bundle 'Valloric/YouCompleteMe'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'      " 补全额外设置
+let g:ycm_complete_in_strings = 0                                       " 设置YCM不在字符串内补全
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>     " 代码跳转
 
-" 自定义页尾文字
-let g:startify_custom_footer = [
-            \ '',
-            \ '   Coding well !!!',
-            \]
+" Syntastic 代码错误检测
+Bundle 'scrooloose/syntastic'
 
-" 自动显示的内容
-let g:startify_list_order = ['files', 'dir']
-" 显示文件数
-let g:startify_files_number = 10
-" 打开文件时自动跳到该文件目录
-let g:startify_change_to_dir = 1
+" AutoFormat 代码格式化，但是Python的支持还不是很好。
+Bundle 'Chiel92/vim-autoformat'
+let g:formatprg_args_expr_python = '"- ".(&textwidth ? "--max-line-length=".&textwidth : "")'   " Python的Bug，临时修复。
+noremap <leader>fc :Autoformat<CR><CR>                                  " 代码格式化快捷键
 
-" NerdTree 设置
-nnoremap <F2> :NERDTreeToggle<cr>   " 设置目录树快捷键
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif  " 设置当Vim最后窗口为NerdTree时自动关闭
+" Tagbar 导航插件设置
+Bundle 'majutsushi/tagbar'
+nmap <F2> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
 
-" indentLine 设置
-let g:indentLine_char = '┊'
-let g:indentLine_noConcealCursor = 1
+" 改进的Python语法高亮
+Bundle 'hdima/python-syntax'
+let python_highlight_all = 1        "高亮所有Python语法
 
-" python-syntax 设置
-let python_highlight_all = 1
+" NerdTree 导航插件设置
+Bundle 'scrooloose/nerdtree'
+map <F3> :NERDTreeToggle<CR>
+let NERDTreeHighlightCursorline=1
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]      " 忽略文件列表
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end        " 当关闭最后文件时关闭Vim
 
-" Python 设置
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
+" DelimitMate 自动补全引号插件设置
+Bundle 'Raimondi/delimitMate'
+au FileType python let b:delimitMate_nesting_quotes = ['"']     " Python特殊设置
 
-" Tagbar 设置
-nmap <F3> :TagbarToggle<CR>
+" Ctrlp 全局查找插件设置
+Bundle 'kien/ctrlp.vim'
+let g:ctrlp_working_path_mode = 'ra'            " 工作文件夹路径
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip        " 全局忽略文件列表
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+	\ 'file': '\v\.(exe|so|dll)$',
+	\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+	\ }
+let g:ctrlp_user_command = 'find %s -type f'    " 使用操作系统自带查找工具
 
-" Parentheses 设置
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-let g:rbpt_max = 40
-let g:rbpt_loadcmd_toggle = 0
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-" Trailing-whitespace设置
-map <leader><space> :FixWhitespace<cr>  去除行末尾空行
-
-" DelimitMate 自动补全单引号，双引号等
-" for python docstring ",优化输入
-au FileType python let b:delimitMate_nesting_quotes = ['"']
-
-" 语法检查
-" Syntastic设置
-let g:syntastic_error_symbol='>>'
-let g:syntastic_warning_symbol='>'
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_highlighting = 0
-let g:syntastic_python_checkers=['pyflakes']
-highlight SyntasticErrorSign guifg=white guibg=black
-
-" python fly check, 弥补syntastic只能打开和保存才检查语法的不足
-let g:pyflakes_use_quickfix = 0
+" JavaScript 语法高亮
+Bundle 'pangloss/vim-javascript'

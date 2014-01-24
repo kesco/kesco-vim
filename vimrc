@@ -20,6 +20,20 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Tab 导航
+noremap <D-M-Left> :tabprevious<cr>
+noremap <D-M-Right> :tabnext<cr>
+map <D-1> 1gt
+map <D-2> 2gt
+map <D-3> 3gt
+map <D-4> 4gt
+map <D-5> 5gt
+map <D-6> 6gt
+map <D-7> 7gt
+map <D-8> 8gt
+map <D-9> 9gt
+map <D-0> :tablast<CR>
+
 " 文件编码
 set encoding=utf-8              " vim内部的编码
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbkgb2312,cp936 " 默认新建的文件编码
@@ -42,7 +56,7 @@ autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
 autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79
 autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79
-autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
+autocmd FileType html,htmldjango,xhtml,haml,jade setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
 
 " 折叠设置
@@ -71,6 +85,7 @@ colorscheme Tomorrow-Night-Bright
 Bundle 'bling/vim-airline'
 set laststatus=2
 let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
 
 " CoffeeScript 插件设置
 Bundle 'kchmck/vim-coffee-script'
@@ -123,4 +138,19 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_user_command = 'find %s -type f'    " 使用操作系统自带查找工具
 
 " JavaScript 语法高亮
-Bundle 'pangloss/vim-javascript'
+Bundle 'jelera/vim-javascript-syntax'
+" au FileType javascript call JavaScriptFold()    " enable javascript code folding
+
+" JavaScript 类库高亮
+Bundle 'othree/javascript-libraries-syntax.vim'
+
+" Jade 语法高亮
+Bundle 'digitaltoad/vim-jade'
+autocmd BufNewFile,BufRead *.jade set filetype=jade             " Jade文件设置，解决与其它语法高亮冲突
+
+" Buffer 导航插件
+Bundle 'techlivezheng/vim-plugin-minibufexpl'
+map <C-n> :MBEbn<cr>
+map <C-o> :MBEbp<cr>
+map <leader>mt :MBEToggle<cr>
+let g:miniBufExplorerAutoStart = 0

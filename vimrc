@@ -23,8 +23,8 @@ set showmatch 			" 括号匹配
 set matchtime=1 		" 匹配高亮时间(单位是十分之一秒)
 
 set guifont=Source\ Code\ Pro\ for\ Powerline:h12 " GUI字体设置
-:set guioptions-=r      " 去除右侧滚动条
-:set guioptions-=L      " 去除左侧滚动条
+set guioptions-=r      " 去除右侧滚动条
+set guioptions-=L      " 去除左侧滚动条
 
 " 设置Leader键
 let mapleader=';'
@@ -72,11 +72,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim' 	" 主题
 Plug 'scrooloose/nerdtree'      " 文件浏览器
 Plug 'techlivezheng/vim-plugin-minibufexpl' " Buffer
+Plug 'kien/ctrlp.vim'           " Ctrl-P功能插件
 
 Plug 'scrooloose/syntastic'     " 代码语法检查
 Plug 'Chiel92/vim-autoformat'   " 代码格式化
 Plug 'Valloric/YouCompleteMe'   " 代码补全
 Plug 'majutsushi/tagbar'        " 显示代码结构
+Plug 'Raimondi/delimitMate'     " 括号补全
 
 Plug 'wting/rust.vim'		    " Rust语法支持
 Plug 'aklt/plantuml-syntax'	    " PlantUml语法支持
@@ -111,6 +113,16 @@ let g:miniBufExplorerAutoStart = 0  " 默认不打开Buffer提示栏
 map <C-Tab> :MBEbn<cr>
 map <C-S-Tab> :MBEbp<cr>
 
+" CtrlP设置
+let g:ctrlp_working_path_mode = 'ra' " 工作文件夹路径
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip    " 全局忽略文件类型
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+let g:ctrlp_user_command = 'find %s -type f' " 使用系统查找命令
+
 " 代码格式化设置
 noremap <leader>fc :Autoformat<CR><CR>
 
@@ -137,3 +149,5 @@ nnoremap <leader>jd :YcmCompleter GoTo<CR>
 nmap <Leader>t :TagbarToggle<CR>
 let g:tagbar_autofocus = 1      " 自动高亮代码所在Tag区域
 
+" DelimitMate 自动补全引号插件设置
+au FileType python let b:delimitMate_nesting_quotes = ['"']     " Python特殊设置

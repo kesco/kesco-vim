@@ -83,6 +83,8 @@ Plug 'Raimondi/delimitMate'     " 括号补全
 Plug 'wting/rust.vim'		    " Rust语法支持
 Plug 'aklt/plantuml-syntax'	    " PlantUml语法支持
 
+Plug 'vimwiki/vimwiki'          " VimWiki
+
 Plug 'jmcantrell/vim-virtualenv'    " Python Virtualenv支持
 
 if has('gui_running')
@@ -151,3 +153,13 @@ let g:tagbar_autofocus = 1      " 自动高亮代码所在Tag区域
 
 " DelimitMate 自动补全引号插件设置
 au FileType python let b:delimitMate_nesting_quotes = ['"']     " Python特殊设置
+
+" VimWiki
+let g:vimwiki_menu = ''         " 不在菜单栏上显示Vimwiki
+let g:vimwiki_use_mouse = 1     " 使用鼠标
+autocmd FileType vimwiki setlocal wrap " 折行
+let develop_notes = {}          " 个人开发笔记
+let develop_notes.path = '~/Documents/note/develop-notes'
+let develop_notes.path_html = '~/Documents/note/develop-notes/output/'
+let develop_notes.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'java': 'java', 'viml': 'viml'}
+let g:vimwiki_list = [develop_notes]

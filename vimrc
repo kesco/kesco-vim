@@ -161,5 +161,5 @@ autocmd FileType vimwiki setlocal wrap " 折行
 let develop_notes = {}          " 个人开发笔记
 let develop_notes.path = '~/Documents/note/develop-notes'
 let develop_notes.path_html = '~/Documents/note/develop-notes/output/'
-let develop_notes.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'java': 'java', 'viml': 'viml'}
+let develop_notes.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'java': 'java', 'sh': 'sh'}
 let g:vimwiki_list = [develop_notes]

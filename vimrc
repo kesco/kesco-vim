@@ -23,8 +23,8 @@ set showmatch 			" 括号匹配
 set matchtime=1 		" 匹配高亮时间(单位是十分之一秒)
 
 set guifont=Source\ Code\ Pro\ for\ Powerline:h12 " GUI字体设置
-set guioptions-=r      " 去除右侧滚动条
-set guioptions-=L      " 去除左侧滚动条
+set guioptions-=r       " 去除右侧滚动条
+set guioptions-=L       " 去除左侧滚动条
 
 " 设置Leader键
 let mapleader=';'
@@ -57,6 +57,9 @@ autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79
 autocmd FileType html,htmldjango,xhtml,haml,jade setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
+
+" 文件类型设置
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown       " Markdown设置
 
 " 折叠设置
 set foldmethod=syntax   " 根据语法进行缩进
@@ -157,9 +160,17 @@ au FileType python let b:delimitMate_nesting_quotes = ['"']     " Python特殊�
 " VimWiki
 let g:vimwiki_menu = ''         " 不在菜单栏上显示Vimwiki
 let g:vimwiki_use_mouse = 1     " 使用鼠标
+let g:vimwiki_diary_months = {
+    \ 1: '一月', 2: '二月', 3: '三月', 4: '四月', 5: '五月', 6: '六月',
+    \ 7: '七月', 8: '八月', 9: '九月', 10: '十月', 11: '十一月', 12: '十二月'
+    \ }
 autocmd FileType vimwiki setlocal wrap " 折行
 let develop_notes = {}          " 个人开发笔记
 let develop_notes.path = '~/Documents/note/develop-notes'
 let develop_notes.path_html = '~/Documents/note/develop-notes/output/'
-let develop_notes.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'java': 'java', 'sh': 'sh'}
+let develop_notes.template_path = '~/Documents/note/develop-notes/template/'
+let develop_notes.template_default = 'kesco.tpl'
+let develop_notes.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'java': 'java', 'sh': 'sh',
+    \ 'viml': 'vim', 'xml': 'xml'
+    \ }
 let g:vimwiki_list = [develop_notes]

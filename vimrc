@@ -76,6 +76,7 @@ Plug 'junegunn/seoul256.vim' 	" 主题
 Plug 'scrooloose/nerdtree'      " 文件浏览器
 Plug 'techlivezheng/vim-plugin-minibufexpl' " Buffer
 Plug 'kien/ctrlp.vim'           " Ctrl-P功能插件
+Plug 'mileszs/ack.vim'          " ACK插件
 
 Plug 'scrooloose/syntastic'     " 代码语法检查
 Plug 'Chiel92/vim-autoformat'   " 代码格式化

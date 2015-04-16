@@ -60,6 +60,7 @@ autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 tex
 
 " 文件类型设置
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown       " Markdown设置
+autocmd FileType markdown setlocal wrap                         " Markdown折行
 
 " 折叠设置
 set foldmethod=syntax   " 根据语法进行缩进
@@ -98,7 +99,7 @@ endif
 call plug#end()
 
 " 主题设置
-let g:seoul256_background = 236
+let g:seoul256_background = 252
 colo seoul256
 
 " 状态栏美化Airline设置
@@ -166,6 +167,7 @@ let g:vimwiki_diary_months = {
     \ 7: '七月', 8: '八月', 9: '九月', 10: '十月', 11: '十一月', 12: '十二月'
     \ }
 autocmd FileType vimwiki setlocal wrap " 折行
+let g:vimwiki_valid_html_tags = 'b,i,s,u,sub,sup,kbd,br,hr,img'
 let develop_notes = {}          " 个人开发笔记
 let develop_notes.path = '~/Documents/note/develop-notes'
 let develop_notes.path_html = '~/Documents/note/develop-notes/output/'

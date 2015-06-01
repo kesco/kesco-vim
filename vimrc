@@ -87,6 +87,7 @@ Plug 'Raimondi/delimitMate'     " 括号补全
 
 Plug 'wting/rust.vim'		    " Rust语法支持
 Plug 'aklt/plantuml-syntax'	    " PlantUml语法支持
+Plug 'udalov/kotlin-vim'        " Kotlin语法支持
 
 Plug 'vimwiki/vimwiki'          " VimWiki
 
@@ -153,7 +154,7 @@ let g:ycm_add_preview_to_completeopt = 0    " 补全时不弹出预览框
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 " 代码结构Tagbar设置
-nmap <Leader>t :TagbarToggle<CR>
+nmap <leader>t :TagbarToggle<CR>
 let g:tagbar_autofocus = 1      " 自动高亮代码所在Tag区域
 
 " DelimitMate 自动补全引号插件设置
@@ -165,15 +166,16 @@ let g:vimwiki_use_mouse = 1     " 使用鼠标
 let g:vimwiki_diary_months = {
     \ 1: '一月', 2: '二月', 3: '三月', 4: '四月', 5: '五月', 6: '六月',
     \ 7: '七月', 8: '八月', 9: '九月', 10: '十月', 11: '十一月', 12: '十二月'
-    \ }
+    \ }                         " 设置日期显示文字
 autocmd FileType vimwiki setlocal wrap " 折行
-let g:vimwiki_valid_html_tags = 'b,i,s,u,sub,sup,kbd,br,hr,img'
+let g:vimwiki_valid_html_tags = 'b,i,s,u,sub,sup,kbd,br,hr,img' " 设置可以在笔记中使用的Html Tag
 let develop_notes = {}          " 个人开发笔记
-let develop_notes.path = '~/Documents/note/develop-notes'
-let develop_notes.path_html = '~/Documents/note/develop-notes/output/'
-let develop_notes.template_path = '~/Documents/note/develop-notes/template/'
-let develop_notes.template_default = 'kesco.tpl'
+let develop_notes.path = '~/Documents/note/develop-notes'                       " 笔记文件路径
+let develop_notes.path_html = '~/Documents/note/develop-notes/output/'          " 笔记转换为HTML输出路径
+let develop_notes.template_path = '~/Documents/note/develop-notes/template/'    " 用于生成HTML页面的模板
+let develop_notes.template_default = 'kesco.tpl'                                " 默认模板
 let develop_notes.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'java': 'java', 'sh': 'sh',
     \ 'viml': 'vim', 'xml': 'xml'
-    \ }
-let g:vimwiki_list = [develop_notes]
+    \ }                                                                         " 启用的代码语法高亮
+let g:vimwiki_list = [develop_notes]                                            " 笔记列表
+nmap <leader>wc :VimwikiAll2HTML<CR>

@@ -13,9 +13,6 @@ set autochdir			" 自动切换目录到当前文件
 set nowrap			    " 不自动折行
 set cursorline			" 突出当前行
 
-set laststatus=2        " 总是显示状态栏
-set ruler               " 在状态栏显示行号
-
 syntax enable           " 开启语法高亮
 syntax on 			    " 允许用指定语法高亮配色方案替换默认方案
 
@@ -25,6 +22,9 @@ set matchtime=1 		" 匹配高亮时间(单位是十分之一秒)
 set guifont=Source\ Code\ Pro\ for\ Powerline:h12 " GUI字体设置
 set guioptions-=r       " 去除右侧滚动条
 set guioptions-=L       " 去除左侧滚动条
+
+set laststatus=2    " 总是显示状态栏
+set ruler           " 在状态栏显示行号
 
 " 设置Leader键
 let mapleader=';'
@@ -73,7 +73,7 @@ set matchtime=1         " 匹配高亮时间（单位是十分之一秒）
 " 需要载入的插件
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/seoul256.vim' 	" 主题
+Plug 'chriskempson/base16-vim' 	" 主题
 Plug 'scrooloose/nerdtree'      " 文件浏览器
 Plug 'techlivezheng/vim-plugin-minibufexpl' " Buffer
 Plug 'kien/ctrlp.vim'           " Ctrl-P功能插件
@@ -93,20 +93,18 @@ Plug 'vimwiki/vimwiki'          " VimWiki
 
 Plug 'jmcantrell/vim-virtualenv'    " Python Virtualenv支持
 
-if has('gui_running')
-    Plug 'vim-airline'          " 状态栏美化
-endif
+Plug 'vim-airline'          " 状态栏美化
+Plug 'edkolev/tmuxline.vim' " 配合Tmux
 
 call plug#end()
 
 " 主题设置
-let g:seoul256_background = 252
-colo seoul256
+let base16colorspace=256
+colo base16-monokai 
+set background=dark
 
 " 状态栏美化Airline设置
-if has('gui_running')
-    let g:airline_powerline_fonts = 1
-endif
+let g:airline_powerline_fonts = 1
 
 " 文件浏览器设置
 map <Leader>n :NERDTreeToggle<CR>

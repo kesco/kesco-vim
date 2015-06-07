@@ -84,6 +84,8 @@ Plug 'Chiel92/vim-autoformat'   " 代码格式化
 Plug 'Valloric/YouCompleteMe'   " 代码补全
 Plug 'majutsushi/tagbar'        " 显示代码结构
 Plug 'Raimondi/delimitMate'     " 括号补全
+Plug 'SirVer/ultisnips'         " 代码片段引擎
+Plug 'honza/vim-snippets'       " 代码片段
 
 Plug 'wting/rust.vim'		    " Rust语法支持
 Plug 'aklt/plantuml-syntax'	    " PlantUml语法支持
@@ -149,7 +151,16 @@ let g:syntastic_python_checkers = ['flake8']
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'    " 全局默认配置
 set completeopt-=preview        " 不要提示
 let g:ycm_add_preview_to_completeopt = 0    " 补全时不弹出预览框
+let g:ycm_seed_identifiers_with_syntax=1    " 开启语义补全
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
+let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']      " 设置前进选择快捷键
+let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']      " 设置后退选择快捷键
+
+" 代码块插入
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsListSnippets="<c-e>"
 
 " 代码结构Tagbar设置
 nmap <leader>t :TagbarToggle<CR>

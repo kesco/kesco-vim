@@ -5,7 +5,7 @@
 " 普通设置
 set nocompatible 						" 不兼容旧Vi
 set autoread 							" 自动更新Buffer里的文件
-set autochdir							" 自动切换目录到当前文件
+" set autochdir							" 自动切换目录到当前文件
 set nowrap			    				" 不自动折行
 
 syntax enable           				" 开启语法高亮
@@ -50,6 +50,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'           " Vundle扩展
 Plugin 'godlygeek/csapprox'             " CGI下的主题兼容
 Plugin 'chriskempson/base16-vim'        " Base16主题
+Plugin 'mhinz/vim-startify'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimshell.vim'
 call vundle#end()
 filetype plugin indent on
 

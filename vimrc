@@ -40,8 +40,12 @@ set guioptions-=m                       " 去除菜单栏
 set guioptions-=T                       " 去除工具栏
 set guioptions-=r       				" 去除右侧滚动条
 set guioptions-=L       				" 去除左侧滚动条
-set guifont=Source\ Code\ Pro\ for\ Powerline\ 10
-
+" 字体使用Source Code Pro
+if has('macunix')
+    set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+else
+    set guifont=Source\ Code\ Pro\ for\ Powerline\ 10
+endif
 set laststatus=2        				" 总是显示状态栏
 set ruler               				" 在状态栏显示行号
 
@@ -120,3 +124,4 @@ nnoremap <leader>bd :bd<CR>
 nnoremap <leader>bt :b 
 " 文件浏览器快捷键
 nnoremap <leader>n :VimFilerExplorer<CR>
+autocmd FileType vimfiler nnoremap <silent><buffer><expr> s vimfiler#do_switch_action('split')

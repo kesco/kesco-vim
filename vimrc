@@ -66,7 +66,8 @@ Plugin 'bling/vim-airline'              " AirLine
 Plugin 'Shougo/unite.vim'               
 Plugin 'Shougo/vimproc.vim'             " Vim-Shell依赖
 Plugin 'Shougo/vimshell.vim'            " Vim Shell
-Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/vimfiler.vim'            " 文件管理器
+Plugin 'tpope/vim-fugitive'             " Git插件
 call vundle#end()
 filetype plugin indent on
 

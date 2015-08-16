@@ -4,3 +4,4 @@ bundle/*
 *.bak
 *.bk
 .DS_Store
+*.swp

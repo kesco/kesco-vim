@@ -71,6 +71,11 @@ Plugin 'tpope/vim-fugitive'             " Git插件
 Plugin 'Shougo/neocomplete.vim'         " 代码补全
 Plugin 'majutsushi/tagbar'              " 代码结构插件
 Plugin 'jiangmiao/auto-pairs'           " 括号补全
+Plugin 'Chiel92/vim-autoformat'         " 代码格式化
+Plugin 'scrooloose/syntastic'           " 代码Lint检查
+if !has('macunix')
+    Plugin 'fcitx.vim'                  " Linux的Fcitx输入法插件
+endif
 call vundle#end()
 filetype plugin indent on
 
@@ -201,6 +206,16 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
+" 代码Lint设置
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " 快捷键设置
 let mapleader=';'						" 设置Leader键
 " 打开Shell快捷键
@@ -215,3 +230,5 @@ nnoremap <leader>n :VimFilerExplorer<CR>
 autocmd FileType vimfiler nnoremap <silent><buffer><expr> s vimfiler#do_switch_action('split')
 " 代码结构快捷键
 nnoremap <leader>t :TagbarToggle<CR>
+" 代码格式化快捷键
+noremap <leader>fc :Autoformat<CR>

@@ -20,8 +20,9 @@ set incsearch 							" 递进搜索
 set hlsearch 							" 高亮搜索结果
 set ignorecase          				" 搜索时大小写不敏感
 
-" 文件编码
+" 文件设置
 set encoding=utf-8						" 设置文件编码为utf-8
+autocmd FileType markdown setlocal wrap " Markdown折行
 
 " 缩进设置
 filetype indent on      				" 自适应不同语言的智能缩进

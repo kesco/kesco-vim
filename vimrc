@@ -217,6 +217,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_mode_map = { 'passive_filetypes': ['java'] }
+
 " 快捷键设置
 let mapleader=';'						" 设置Leader键
 " 打开Shell快捷键

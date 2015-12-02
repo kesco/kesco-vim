@@ -13,7 +13,7 @@ fi
 # Copy vimrc files
 for file in vimrc*; do
   echo "copy $file to ~/.$file ..."
-  cp "$file" "~/.$file"
+  cp "$file" "${ZDOTDIR:-$HOME}/.${file}"
   echo "done."
 done
 

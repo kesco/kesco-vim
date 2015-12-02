@@ -15,9 +15,7 @@ git add .
 
 # git commit
 echo "Git commit..."
-read commit
-echo $commit
-git commit -m \"$commit\"
+git commit 
 git push
 
 

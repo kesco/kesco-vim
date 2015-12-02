@@ -14,6 +14,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'tpope/vim-markdown'
 Plugin 'suan/vim-instant-markdown'
@@ -59,3 +60,6 @@ let g:ycm_filetype_blacklist = {
 
 " Markdown Preview
 let g:instant_markdown_slow = 1
+
+" Auto Pair Settings
+let g:AutoPairsFlyMode = 1

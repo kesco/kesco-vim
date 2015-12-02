@@ -1,0 +1,18 @@
+" File Type Settings
+set encoding=utf-8
+
+syntax enable
+syntax on
+
+set nowrap
+
+filetype indent on
+set smartindent	
+
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+" Markdown Filetype
+autocmd FileType markdown setlocal wrap

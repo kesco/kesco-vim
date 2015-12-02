@@ -1,0 +1,21 @@
+" Key Map
+let mapleader=';'
+
+" Buffer Keymap
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
+nnoremap <leader>bd :bd<CR>
+nnoremap <leader>bt :b
+
+" Nerd Tree File Manager Keymap
+map <leader>n :NERDTreeToggle<CR>
+
+" TagBar Keymap
+nmap <leader>t :TagbarToggle<CR>
+
+" YouCompleteMe Keymap
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+
+nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>je :YcmCompleter GoToDefinition<CR>

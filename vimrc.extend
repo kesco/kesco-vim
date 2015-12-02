@@ -1,0 +1,7 @@
+fu! LoadScript(file_path)
+  if filereadable(expand(a:file_path))
+    exe 'so '.a:file_path
+  else
+    echoe a:file_path." did not exist."
+  endif
+endf

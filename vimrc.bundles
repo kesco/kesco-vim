@@ -10,13 +10,18 @@ Plugin 'morhetz/gruvbox'
 Plugin 'bling/vim-airline'
 Plugin 'ctrlpvim/ctrlp.vim'
 
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
-Plugin 'jiangmiao/auto-pairs'
 
-Plugin 'tpope/vim-markdown'
+" Auto Complete
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+" Language Support
+Plugin 'tpope/vim-markdown'                             " Markdown Support
 Plugin 'suan/vim-instant-markdown'
 
 call vundle#end()

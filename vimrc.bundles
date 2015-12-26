@@ -19,6 +19,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'Chiel92/vim-autoformat'
 
 " Language Support
 Plugin 'tpope/vim-markdown'                             " Markdown Support
@@ -65,6 +66,3 @@ let g:ycm_filetype_blacklist = {
 
 " Markdown Preview
 let g:instant_markdown_slow = 1
-
-" Auto Pair Settings
-let g:AutoPairsFlyMode = 1

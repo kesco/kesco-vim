@@ -28,3 +28,6 @@ let g:SuperTabDefaultCompletionType = '<C-Space>'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" AutoFormat
+noremap <leader>fc :Autoformat<CR>

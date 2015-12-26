@@ -11,6 +11,6 @@
 - [x] 上传与安装脚本
 - [x] VIMRC文件拆分
 - [x] MARKDOWN编辑事实预览
-- [ ] C\C++
+- [x] C\C++
 - [ ] Python
 

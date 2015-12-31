@@ -20,6 +20,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'vim-scripts/DrawIt'
 
 " Language Support
 Plugin 'tpope/vim-markdown'                             " Markdown Support
@@ -64,5 +65,5 @@ let g:ycm_filetype_blacklist = {
   \ 'nerdtree' : 1,
   \}
 
-" Markdown Preview
+" Markdown Preview Settings
 let g:instant_markdown_slow = 1

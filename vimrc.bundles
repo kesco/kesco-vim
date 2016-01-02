@@ -15,6 +15,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/DrawIt'
 
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
+
 " Auto Complete
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
@@ -71,3 +74,6 @@ let g:instant_markdown_slow = 1
 
 " NerdComment
 let g:NERDSpaceDelims=1                                     " 注释的时候自动加个空格, 强迫症必配
+
+" Vim-Notes
+let g:notes_directories = ['~/.kesco_notes']

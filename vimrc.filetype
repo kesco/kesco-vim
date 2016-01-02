@@ -16,3 +16,6 @@ set shiftwidth=2
 
 " Markdown Filetype
 autocmd FileType markdown setlocal wrap
+
+" Vim Notes Filetype
+autocmd FileType notes setlocal wrap

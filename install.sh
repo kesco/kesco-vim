@@ -10,6 +10,13 @@ else
   echo "OK... Detect the Vundle Plugin."
 fi
 
+echo "Checking the Vim temp directory exist..."
+if [ ! -d ~/.vim/tmp ]; then
+  echo "The temp directory didn't exist. Make the temp directory..."
+  mkdir ~/.vim/tmp
+  echo "Done..."
+fi
+
 # Copy vimrc files
 for file in vimrc*; do
   echo "copy $file to ~/.$file ..."

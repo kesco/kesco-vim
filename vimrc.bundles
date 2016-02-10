@@ -6,8 +6,10 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'morhetz/gruvbox'
+" UI
+Plugin 'w0ng/vim-hybrid'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
 
 Plugin 'scrooloose/syntastic'
@@ -29,7 +31,8 @@ Plugin 'a.vim'
 
 " Language Support
 Plugin 'tpope/vim-markdown'                             " Markdown Support
-Plugin 'suan/vim-instant-markdown'
+Plugin 'suan/vim-instant-markdown'                      " Markdown Instance Preview
+Plugin 'richq/vim-cmake-completion'                     " Cmake Auto Complete
 
 call vundle#end()
 filetype plugin indent on

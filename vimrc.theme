@@ -9,20 +9,21 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
+" Theme
+colorscheme hybrid
+set background=dark
+
 if has('gui_running')
-    set lines=40
-    set columns=120
+  set lines=40
+  set columns=120
 endif
 
 if has('macunix')
-    set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+  set guifont=Source\ Code\ Pro\ for\ Powerline:h13
 endif
 
 set sm
 set mat=1
-
-colorscheme gruvbox
-set background=dark
 
 " Airline Status Bar
 let g:airline_powerline_fonts=1
@@ -36,6 +37,3 @@ set statusline+=%*
 
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
-
-" YouCompleteMe Style
-

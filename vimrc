@@ -1,25 +1,27 @@
-" Kesco的Vim配置
-" Author: Kesco Lin
-" Date: 2015-11-05
+""" Kesco的Vim配置
+""" Author: Kesco Lin
+""" Date: 2018-11-10
 
-" Basic Settings
+""" 基本设置
 set nocompatible
-set autoread
-set autochdir
 
+""" 包管理
+call plug#begin()
+Plug 'lifepillar/vim-solarized8'
+call plug#end()
+
+""" 搜索设置
 set incsearch
 set hlsearch
 set ignorecase
 
-set directory^=$HOME/.vim/tmp//
+""" UI设置
+set number
+set termguicolors
 
-if filereadable(expand('~/.vimrc.extend'))
-  so ~/.vimrc.extend
-else
-  echoe 'The vimrc extend file did not exist.'
-endif
+" 隐藏右侧滚动条
+set guioptions-=r	
 
-call LoadScript("~/.vimrc.bundles")
-call LoadScript("~/.vimrc.filetype")
-call LoadScript("~/.vimrc.theme")
-call LoadScript("~/.vimrc.keymap")
+" 主题
+colorscheme solarized8
+

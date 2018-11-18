@@ -41,34 +41,42 @@ set softtabstop=0
 
 """ UI设置
 set number
-if has("termguicolors")
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-
-" 隐藏右侧滚动条
-if s:has_gui > 0
-  set guioptions-=r
-  if s:has_gui > 1
-    set guioptions-=T
-    set guioptions-=m
-  endif
-endif
-
 " airline设置
 let g:airline#extensions#tabline#enabled=1
-
 " 主题
 colorscheme base16-onedark
 
-" 字体
-if s:has_gui > 0
+function! s:UiSettingCommon()
+  set guioptions-=r
   set columns=120
   set lines=50
-  if s:has_gui > 1
-    set guifont=Sarasa\ Mono\ SC:h12
-  else
-    set guifont=Sarasa\ Mono\ SC:h14
+endfunction
+
+function! s:UiSettingMac()
+  call s:UiSettingCommon()
+  set guifont=Sarasa\ Mono\ SC:h14
+endfunction
+
+function! s:UiSettingWin()
+  call s:UiSettingCommon()
+  set guioptions-=T
+  set guioptions-=m
+  set guifont=Sarasa\ Mono\ SC:h12
+endfunction
+
+function! s:UiSettingTerminal()
+  if has("termguicolors")
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
   endif
+endfunction
+
+if s:has_gui == 1
+  call s:UiSettingMac()
+elseif s:has_gui > 1
+  call s:UiSettingWin()
+else
+  call s:UiSettingTerminal()
 endif
+

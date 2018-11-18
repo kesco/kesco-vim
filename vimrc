@@ -8,7 +8,13 @@ set encoding=utf-8
 set termencoding=utf-8
 
 if has("gui_running")
-  let s:has_gui=1
+  if has("gui_macvim")
+    let s:has_gui=1
+  elseif has("gui_win32")
+    let s:has_gui=2
+  else
+    let s:has_gui=3
+  endif
 else
   let s:has_gui=-1
 endif
@@ -42,7 +48,13 @@ if has("termguicolors")
 endif
 
 " 隐藏右侧滚动条
-set guioptions-=r
+if s:has_gui > 0
+  set guioptions-=r
+  if s:has_gui > 1
+    set guioptions-=T
+    set guioptions-=m
+  endif
+endif
 
 " airline设置
 let g:airline#extensions#tabline#enabled=1
@@ -52,7 +64,11 @@ colorscheme base16-onedark
 
 " 字体
 if s:has_gui > 0
-  set guifont=Sarasa\ Mono\ SC:h14
   set columns=120
   set lines=50
+  if s:has_gui > 1
+    set guifont=Sarasa\ Mono\ SC:h12
+  else
+    set guifont=Sarasa\ Mono\ SC:h14
+  endif
 endif

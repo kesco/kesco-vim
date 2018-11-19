@@ -47,13 +47,14 @@ let g:airline#extensions#tabline#enabled=1
 colorscheme base16-onedark
 
 function! s:UiSettingCommon()
+  set guioptions-=L
   set guioptions-=r
-  set columns=120
-  set lines=50
 endfunction
 
 function! s:UiSettingMac()
-  call s:UiSettingCommon()
+  call s:UiSettingCommon() 
+  set columns=120
+  set lines=41
   set guifont=Sarasa\ Mono\ SC:h14
 endfunction
 
@@ -61,6 +62,8 @@ function! s:UiSettingWin()
   call s:UiSettingCommon()
   set guioptions-=T
   set guioptions-=m
+  set columns=120
+  set lines=50
   set guifont=Sarasa\ Mono\ SC:h12
 endfunction
 

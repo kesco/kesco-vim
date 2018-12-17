@@ -12,8 +12,10 @@ if has("gui_running")
     let s:has_gui=1
   elseif has("gui_win32")
     let s:has_gui=2
-  else
+  elseif has("gui_gtk3")
     let s:has_gui=3
+  else
+    let s:has_gui=4
   endif
 else
   let s:has_gui=-1
@@ -67,6 +69,16 @@ function! s:UiSettingWin()
   set guifont=Sarasa\ Mono\ SC:h12
 endfunction
 
+function! s:UiSettingLinux()
+  call s:UiSettingCommon()
+  set guioptions-=T
+  set guioptions-=m
+  set columns=100
+  set lines=30
+  set guifont=Ubuntu\ Mono\ 12
+endfunction
+
+
 function! s:UiSettingTerminal()
   if has("termguicolors")
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -77,8 +89,10 @@ endfunction
 
 if s:has_gui == 1
   call s:UiSettingMac()
-elseif s:has_gui > 1
+elseif s:has_gui == 2
   call s:UiSettingWin()
+elseif s:has_gui > 2
+  call s:UiSettingLinux()
 else
   call s:UiSettingTerminal()
 endif

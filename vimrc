@@ -1,6 +1,6 @@
 """ Kesco的Vim配置
 """ Author: Kesco Lin
-""" Date: 2018-11-10
+""" Date: 2019-06-16
 
 """ 基本设置
 set nocompatible
@@ -75,9 +75,8 @@ function! s:UiSettingLinux()
   set guioptions-=m
   set columns=100
   set lines=30
-  set guifont=Ubuntu\ Mono\ 12
+  set guifont=Sarasa\ Mono\ SC\ 12
 endfunction
-
 
 function! s:UiSettingTerminal()
   if has("termguicolors")

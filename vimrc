@@ -7,16 +7,12 @@ set nocompatible
 set encoding=utf-8
 set termencoding=utf-8
 
-if has("gui_running")
-  if has("gui_macvim")
-    let s:has_gui=1
-  elseif has("gui_win32")
-    let s:has_gui=2
-  elseif has("gui_gtk3")
-    let s:has_gui=3
-  else
-    let s:has_gui=4
-  endif
+if has("gui_macvim")
+  let s:has_gui=1
+elseif has("gui_win32")
+  let s:has_gui=2
+elseif has("gui_gtk3")
+  let s:has_gui=3
 else
   let s:has_gui=-1
 endif
@@ -46,7 +42,7 @@ set number
 " airline设置
 let g:airline#extensions#tabline#enabled=1
 " 主题
-colorscheme base16-onedark
+colorscheme base16-solarized-light
 
 function! s:UiSettingCommon()
   set guioptions-=L
@@ -90,7 +86,7 @@ if s:has_gui == 1
   call s:UiSettingMac()
 elseif s:has_gui == 2
   call s:UiSettingWin()
-elseif s:has_gui > 2
+elseif s:has_gui == 3
   call s:UiSettingLinux()
 else
   call s:UiSettingTerminal()

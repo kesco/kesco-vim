@@ -4,20 +4,9 @@
 
 """ 基本设置
 set nocompatible
-set encoding=utf-8
-set termencoding=utf-8
-
-if has("gui_macvim")
-  let s:has_gui=1
-elseif has("gui_win32")
-  let s:has_gui=2
-elseif has("gui_gtk3")
-  let s:has_gui=3
-else
-  let s:has_gui=-1
-endif
 
 """ 包管理
+
 call plug#begin()
 Plug 'chriskempson/base16-vim'
 
@@ -25,24 +14,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
-""" 搜索设置
-set incsearch
-set hlsearch
-set ignorecase
+""" 包管理 End
 
-""" 编辑设置
-set expandtab
-set tabstop=2
-set shiftwidth=2
-" 关闭softtabstop 不要将空格和tab混合输入
-set softtabstop=0
-
-""" UI设置
-set number
-" airline设置
-let g:airline#extensions#tabline#enabled=1
-" 主题
-colorscheme base16-solarized-light
+""" 自定义函数
 
 function! s:UiSettingCommon()
   set guioptions-=L
@@ -69,8 +43,8 @@ function! s:UiSettingLinux()
   call s:UiSettingCommon()
   set guioptions-=T
   set guioptions-=m
-  set columns=100
-  set lines=30
+  set columns=120
+  set lines=40
   set guifont=Sarasa\ Mono\ SC\ 12
 endfunction
 
@@ -82,13 +56,55 @@ function! s:UiSettingTerminal()
   endif
 endfunction
 
-if s:has_gui == 1
-  call s:UiSettingMac()
-elseif s:has_gui == 2
-  call s:UiSettingWin()
-elseif s:has_gui == 3
-  call s:UiSettingLinux()
-else
-  call s:UiSettingTerminal()
-endif
+function! s:Main() 
+  if has("gui_running")
+    if has("gui_macvim")
+      let l:has_gui=1
+    elseif has("gui_win32")
+      let l:has_gui=2
+    elseif has("gui_gtk3")
+      let l:has_gui=3
+    else
+      let l:has_gui=-1
+    endif
+  else
+    let l:has_gui=-1
+  endif
 
+  if l:has_gui == 1
+    call s:UiSettingMac()
+  elseif l:has_gui == 2
+    call s:UiSettingWin()
+  elseif l:has_gui == 3
+    call s:UiSettingLinux()
+  else
+    call s:UiSettingTerminal()
+  endif
+endfunction
+
+""" 自定义函数 End
+
+""" 编码字符
+set encoding=utf-8
+set termencoding=utf-8
+
+""" 搜索设置
+set incsearch
+set hlsearch
+set ignorecase
+
+""" 编辑设置
+set expandtab
+set tabstop=2
+set shiftwidth=2
+" 关闭softtabstop 不要将空格和tab混合输入
+set softtabstop=0
+
+""" UI设置
+set number
+" airline设置
+let g:airline#extensions#tabline#enabled=1
+" 主题
+colorscheme base16-solarized-light
+
+call s:Main()

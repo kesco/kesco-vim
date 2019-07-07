@@ -105,6 +105,5 @@ set number
 " airline设置
 let g:airline#extensions#tabline#enabled=1
 " 主题
-colorscheme base16-solarized-light
-
+colorscheme base16-onedark
 call s:Main()

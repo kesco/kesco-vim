@@ -102,6 +102,11 @@ set softtabstop=0
 
 """ UI设置
 set number
+" 关闭声音和闪屏
+set vb t_vb=
+au GuiEnter * set t_vb=
+" 文件管理器
+let g:netrw_winsize = 25
 " airline设置
 let g:airline#extensions#tabline#enabled=1
 " 主题

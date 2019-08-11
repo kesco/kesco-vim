@@ -37,6 +37,9 @@ function! s:UiSettingWin()
   set columns=120
   set lines=50
   set guifont=Sarasa\ Mono\ SC:h12
+  " 解决菜单乱码
+  source $VIMRUNTIME/delmenu.vim
+  source $VIMRUNTIME/menu.vim
 endfunction
 
 function! s:UiSettingLinux()
@@ -99,6 +102,8 @@ set tabstop=2
 set shiftwidth=2
 " 关闭softtabstop 不要将空格和tab混合输入
 set softtabstop=0
+" 设置Delete键
+set backspace=2
 
 """ UI设置
 set number

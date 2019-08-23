@@ -2,8 +2,29 @@
 """ Author: Kesco Lin
 """ Date: 2019-06-16
 
-""" 基本设置
+""" 设置不兼容Vi
 set nocompatible
+
+""" 初始化系统变量
+if has("gui_running")
+  if has("gui_macvim")
+    let s:gui_type=1        " MacVim
+  elseif has("gui_win32")
+    let s:gui_type=2        " Windows GVim
+  elseif has("gui_gtk3")
+    let s:gui_type=3        " Linux GVim
+  else
+    let s:gui_type=-1       " Terminal Vim
+  endif
+elseif has('nvim')
+  if exists('g:GuiLoaded')
+    let s:gui_type=4        " NeoVim Qt
+  else
+    let s:gui_type=5        " Terminal NeoVim
+  endif
+else
+  let s:gui_type=-1         " Terminal Vim
+endif
 
 """ 包管理
 
@@ -51,6 +72,13 @@ function! s:UiSettingLinux()
   set guifont=Sarasa\ Mono\ SC\ 12
 endfunction
 
+function! s:UiSettingNvim()
+endfunction
+
+function! s:UiSettingNvimTerminal()
+  set termguicolors
+endfunction
+
 function! s:UiSettingTerminal()
   if has("termguicolors")
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -60,26 +88,16 @@ function! s:UiSettingTerminal()
 endfunction
 
 function! s:Main() 
-  if has("gui_running")
-    if has("gui_macvim")
-      let l:has_gui=1
-    elseif has("gui_win32")
-      let l:has_gui=2
-    elseif has("gui_gtk3")
-      let l:has_gui=3
-    else
-      let l:has_gui=-1
-    endif
-  else
-    let l:has_gui=-1
-  endif
-
-  if l:has_gui == 1
+  if s:gui_type == 1
     call s:UiSettingMac()
-  elseif l:has_gui == 2
+  elseif s:gui_type == 2
     call s:UiSettingWin()
-  elseif l:has_gui == 3
+  elseif s:gui_type == 3
     call s:UiSettingLinux()
+  elseif s:gui_type == 4
+    call s:UiSettingNvim()
+  elseif s:gui_type == 5
+    call s:UiSettingNvimTerminal()
   else
     call s:UiSettingTerminal()
   endif
@@ -112,6 +130,7 @@ set vb t_vb=
 au GuiEnter * set t_vb=
 " 文件管理器
 let g:netrw_winsize = 25
+let g:netrw_browse_split=4
 " airline设置
 let g:airline#extensions#tabline#enabled=1
 " 主题

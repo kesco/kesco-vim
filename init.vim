@@ -33,6 +33,7 @@ Plug 'chriskempson/base16-vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 """ 包管理 End
@@ -129,10 +130,18 @@ set number
 set vb t_vb=
 au GuiEnter * set t_vb=
 " 文件管理器
-let g:netrw_winsize = 25
-let g:netrw_browse_split=4
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeWinSize = 35
+let NERDTreeMinimalUI = 1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " airline设置
 let g:airline#extensions#tabline#enabled=1
 " 主题
 colorscheme base16-onedark
+
+""" 快捷键
+map <leader>n :NERDTreeToggle<CR>
+
 call s:Main()

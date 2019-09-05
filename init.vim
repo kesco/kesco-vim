@@ -155,6 +155,7 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeWinSize = 35
 let NERDTreeMinimalUI = 1
+let g:NERDTreeChDirMode = 2
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " LeaderF模糊搜索
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
@@ -168,7 +169,7 @@ let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 1
 
 """ File Type
-  autocmd FileType json syntax match Comment +\/\/.\+$+
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 """ 快捷键
 

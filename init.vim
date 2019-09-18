@@ -18,7 +18,11 @@ if has("gui_running")
     let s:os=0
   else
     let s:gui_type=-1       " Terminal Vim
-    let s:os=0
+    if has('win32')
+      let s:os=1
+    else
+      let s:os=0
+    endif
   endif
 elseif has('nvim')
   if exists('g:GuiLoaded')
@@ -33,7 +37,11 @@ elseif has('nvim')
   endif
 else
   let s:gui_type=-1         " Terminal Vim
-  let s:os=0
+  if has('win32')
+    let s:os=1
+  else
+    let s:os=0
+  endif
 endif
 
 """ 包管理
@@ -82,6 +90,9 @@ function! s:UiSettingWin()
   " 解决菜单乱码
   source $VIMRUNTIME/delmenu.vim
   source $VIMRUNTIME/menu.vim
+
+  set pythonthreedll=D:\Apps\Scoop\apps\miniconda3\current\python37.dll
+  set pythonthreehome=D:\Apps\Scoop\apps\miniconda3\current
 endfunction
 
 function! s:UiSettingLinux()
@@ -105,6 +116,10 @@ function! s:UiSettingTerminal()
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
+  endif
+  if s:os == 1
+    set pythonthreedll=D:\Apps\Scoop\apps\miniconda3\current\python37.dll
+    set pythonthreehome=D:\Apps\Scoop\apps\miniconda3\current
   endif
 endfunction
 
@@ -144,7 +159,8 @@ set shiftwidth=2
 set softtabstop=0
 " 设置Delete键
 set backspace=eol,start,indent
-
+" 不用Swap File
+set noswapfile
 """ UI设置
 set number
 " 关闭声音和闪屏

@@ -44,13 +44,21 @@ else
   endif
 endif
 
+""" 初始化系统变量 End
+
 """ 包管理
 
 call plug#begin()
-Plug 'chriskempson/base16-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree'
+if s:gui_type >= 4  "Neovim
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 if s:os == 0
@@ -71,6 +79,7 @@ call plug#end()
 function! s:UiSettingCommon()
   set guioptions-=L
   set guioptions-=r
+  highlight VertSplit gui=NONE guifg=#424450 guibg=NONE
 endfunction
 
 function! s:UiSettingMac()
@@ -99,8 +108,8 @@ function! s:UiSettingLinux()
   call s:UiSettingCommon()
   set guioptions-=T
   set guioptions-=m
-  set columns=120
-  set lines=40
+  set columns=100
+  set lines=32
   set guifont=Sarasa\ Mono\ SC\ 12
 endfunction
 
@@ -121,6 +130,7 @@ function! s:UiSettingTerminal()
     set pythonthreedll=D:\Apps\Scoop\apps\miniconda3\current\python37.dll
     set pythonthreehome=D:\Apps\Scoop\apps\miniconda3\current
   endif
+  highlight VertSplit cterm=NONE ctermfg=238 ctermbg=NONE
 endfunction
 
 function! s:Main() 
@@ -137,6 +147,14 @@ function! s:Main()
   else
     call s:UiSettingTerminal()
   endif
+endfunction
+
+" Defx Mapping函数
+function! s:defx_mappings() abort
+	" Defx window keyboard mappings
+	setlocal signcolumn=no
+	" 使用回车打开文件
+	nnoremap <silent><buffer><expr> <CR> defx#do_action('multi', ['drop'])
 endfunction
 
 """ 自定义函数 End
@@ -167,31 +185,48 @@ set number
 set vb t_vb=
 au GuiEnter * set t_vb=
 " 文件管理器
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let g:NERDTreeWinSize = 35
-let NERDTreeMinimalUI = 1
-let g:NERDTreeChDirMode = 2
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+call defx#custom#option('_', {
+      \ 'winwidth': 35,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'show_ignored_files': 0,
+      \ 'buffer_name': '',
+      \ 'toggle': 1,
+      \ 'resume': 1,
+	    \ 'root_marker': '≡ ',
+	    \ 'ignored_files':
+	    \     '.mypy_cache,.pytest_cache,.git,.hg,.svn,.stversions'
+	    \   . ',__pycache__,.sass-cache,*.egg-info,.DS_Store,*.pyc,*.swp'
+      \ })
+autocmd FileType defx call s:defx_mappings()
 " LeaderF模糊搜索
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_WorkingDirectoryMode = 'Ac'
 " airline设置
 let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts = 1
 " 主题
-colorscheme base16-onedark
+syntax on
+colorscheme dracula
+set fillchars+=vert:│
 " Markdown Preview
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 1
 
 """ File Type
+
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
+""" File Type End
 
 """ 快捷键
 
 " 文件浏览器
-map <leader>n :NERDTreeToggle<CR>
+nmap <silent> <Leader>n :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
+
 " LeaderF
 noremap <leader>t :LeaderfFunction<CR>
+
+""" 快捷键 End
 
 call s:Main()

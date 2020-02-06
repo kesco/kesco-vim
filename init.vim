@@ -52,13 +52,7 @@ call plug#begin()
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-if s:gui_type >= 4  "Neovim
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'mcchrish/nnn.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 if s:os == 0
@@ -149,14 +143,6 @@ function! s:Main()
   endif
 endfunction
 
-" Defx Mapping函数
-function! s:defx_mappings() abort
-	" Defx window keyboard mappings
-	setlocal signcolumn=no
-	" 使用回车打开文件
-	nnoremap <silent><buffer><expr> <CR> defx#do_action('multi', ['drop'])
-endfunction
-
 """ 自定义函数 End
 
 """ 编码字符
@@ -185,23 +171,32 @@ set number
 set vb t_vb=
 au GuiEnter * set t_vb=
 " 文件管理器
-call defx#custom#option('_', {
-      \ 'winwidth': 35,
-      \ 'split': 'vertical',
-      \ 'direction': 'topleft',
-      \ 'show_ignored_files': 0,
-      \ 'buffer_name': '',
-      \ 'toggle': 1,
-      \ 'resume': 1,
-	    \ 'root_marker': '≡ ',
-	    \ 'ignored_files':
-	    \     '.mypy_cache,.pytest_cache,.git,.hg,.svn,.stversions'
-	    \   . ',__pycache__,.sass-cache,*.egg-info,.DS_Store,*.pyc,*.swp'
-      \ })
-autocmd FileType defx call s:defx_mappings()
+let g:nnn#layout = 'new'
+let g:nnn#layout = { 'left': '~35%' }
+let g:nnn#action = {
+      \ '<c-t>': 'tab split',
+      \ '<c-x>': 'split',
+      \ '<c-v>': 'vsplit' }
 " LeaderF模糊搜索
-let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "Sarasa Mono SC" }
+let g:Lf_PreviewResult = {
+            \ 'File': 1,
+            \ 'Buffer': 1,
+            \ 'Mru': 1,
+            \ 'Tag': 1,
+            \ 'BufTag': 1,
+            \ 'Function': 1,
+            \ 'Line': 1,
+            \ 'Colorscheme': 0,
+            \ 'Rg': 0,
+            \ 'Gtags': 1
+            \}
+" hi def link Lf_hl_popup_inputText StatusLine
+" hi def link Lf_hl_popup_window Pmenu
+" hi def link Lf_hl_popup_blank StatusLine
 " airline设置
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts = 1
@@ -222,7 +217,6 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 """ 快捷键
 
 " 文件浏览器
-nmap <silent> <Leader>n :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
 
 " LeaderF
 noremap <leader>t :LeaderfFunction<CR>

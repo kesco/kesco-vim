@@ -194,9 +194,6 @@ let g:Lf_PreviewResult = {
             \ 'Rg': 0,
             \ 'Gtags': 1
             \}
-" hi def link Lf_hl_popup_inputText StatusLine
-" hi def link Lf_hl_popup_window Pmenu
-" hi def link Lf_hl_popup_blank StatusLine
 " airline设置
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts = 1
@@ -219,7 +216,8 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 " 文件浏览器
 
 " LeaderF
-noremap <leader>t :LeaderfFunction<CR>
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>ft :LeaderfFunction<CR>
 
 """ 快捷键 End
 

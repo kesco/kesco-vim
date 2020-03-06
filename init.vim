@@ -53,7 +53,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mcchrish/nnn.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ycm-core/YouCompleteMe'
 
 if s:os == 0
   Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -171,6 +171,8 @@ set number
 set vb t_vb=
 au GuiEnter * set t_vb=
 " 文件管理器
+let $NNN_USE_EDITOR=1
+let $EDITOR='gvim' 
 let g:nnn#layout = 'new'
 let g:nnn#layout = { 'left': '~35%' }
 let g:nnn#action = {
@@ -214,7 +216,9 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 """ 快捷键
 
 " 文件浏览器
-
+let g:nnn#set_default_mappings = 0
+nnoremap <silent> <leader>nn :NnnPicker<CR>
+nnoremap <leader>nc :NnnPicker '%:p:h'<CR>
 " LeaderF
 let g:Lf_ShortcutF = "<leader>ff"
 noremap <leader>ft :LeaderfFunction<CR>

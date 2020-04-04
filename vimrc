@@ -79,7 +79,7 @@ endfunction
 function! s:UiSettingMac()
   call s:UiSettingCommon() 
   set columns=120
-  set lines=41
+  set lines=50
   set guifont=Sarasa\ Mono\ SC:h14
 endfunction
 
@@ -102,9 +102,9 @@ function! s:UiSettingLinux()
   call s:UiSettingCommon()
   set guioptions-=T
   set guioptions-=m
-  set columns=100
-  set lines=32
-  set guifont=Sarasa\ Mono\ SC\ 12
+  set columns=80
+  set lines=30
+  set guifont=Hack\ Nerd\ Font\ Mono\ 11
 endfunction
 
 function! s:UiSettingNvim()
@@ -167,13 +167,13 @@ set backspace=eol,start,indent
 set noswapfile
 """ UI设置
 set number
+set sidescroll=1
 " 关闭声音和闪屏
 set vb t_vb=
 au GuiEnter * set t_vb=
 " 文件管理器
 let $NNN_USE_EDITOR=1
 let $EDITOR='gvim' 
-let g:nnn#layout = 'new'
 let g:nnn#layout = { 'left': '~35%' }
 let g:nnn#action = {
       \ '<c-t>': 'tab split',
@@ -183,7 +183,11 @@ let g:nnn#action = {
 let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
-let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "Sarasa Mono SC" }
+if s:gui_type == 3
+  let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "Hack Nerd Font Mono" }
+else
+  let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "Sarasa Mono SC" }
+endif
 let g:Lf_PreviewResult = {
             \ 'File': 1,
             \ 'Buffer': 1,
@@ -217,11 +221,12 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " 文件浏览器
 let g:nnn#set_default_mappings = 0
-nnoremap <silent> <leader>nn :NnnPicker<CR>
-nnoremap <leader>nc :NnnPicker '%:p:h'<CR>
+noremap <silent><leader>nn :NnnPicker<CR>
+noremap <silent><leader>nc :NnnPicker '%:p:h'<CR>
 " LeaderF
 let g:Lf_ShortcutF = "<leader>ff"
-noremap <leader>ft :LeaderfFunction<CR>
+noremap <silent><leader>ft :LeaderfFunction<CR>
+noremap <silent><leader>fb :LeaderFBuffer<CR>
 
 """ 快捷键 End
 

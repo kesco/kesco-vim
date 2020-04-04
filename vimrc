@@ -50,10 +50,9 @@ endif
 
 call plug#begin()
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mcchrish/nnn.vim'
+Plug 'mcchrish/nnn.vim', { 'tag': 'v1.5' }
 Plug 'ycm-core/YouCompleteMe'
+Plug 'tpope/vim-fugitive'
 
 if s:os == 0
   Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -102,9 +101,10 @@ function! s:UiSettingLinux()
   call s:UiSettingCommon()
   set guioptions-=T
   set guioptions-=m
-  set columns=80
-  set lines=30
-  set guifont=Hack\ Nerd\ Font\ Mono\ 11
+  set columns=100
+  set lines=32
+  "set guifont=Iosevka\ 11
+  set guifont=Sarasa\ Mono\ SC\ 11
 endfunction
 
 function! s:UiSettingNvim()
@@ -183,11 +183,7 @@ let g:nnn#action = {
 let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
-if s:gui_type == 3
-  let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "Hack Nerd Font Mono" }
-else
-  let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "Sarasa Mono SC" }
-endif
+let g:Lf_StlSeparator = { 'left': "\u25e3", 'right': "\u25e5", 'font': "Sarasa Mono SC" }
 let g:Lf_PreviewResult = {
             \ 'File': 1,
             \ 'Buffer': 1,
@@ -200,9 +196,7 @@ let g:Lf_PreviewResult = {
             \ 'Rg': 0,
             \ 'Gtags': 1
             \}
-" airline设置
-let g:airline#extensions#tabline#enabled=1
-let g:airline_powerline_fonts = 1
+" 状态栏设置
 " 主题
 syntax on
 colorscheme dracula
@@ -226,7 +220,7 @@ noremap <silent><leader>nc :NnnPicker '%:p:h'<CR>
 " LeaderF
 let g:Lf_ShortcutF = "<leader>ff"
 noremap <silent><leader>ft :LeaderfFunction<CR>
-noremap <silent><leader>fb :LeaderFBuffer<CR>
+noremap <silent><leader>fb :LeaderfBuffer<CR>
 
 """ 快捷键 End
 

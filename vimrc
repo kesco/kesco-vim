@@ -50,8 +50,11 @@ endif
 
 call plug#begin()
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
+Plug 'ryanoasis/vim-devicons'
 Plug 'mcchrish/nnn.vim', { 'tag': 'v1.5' }
-Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe', { 'do': 'python install.py --clangd-completer --all' }
 Plug 'tpope/vim-fugitive'
 
 if s:os == 0
@@ -77,6 +80,7 @@ endfunction
 
 function! s:UiSettingMac()
   call s:UiSettingCommon() 
+  set guioptions-=e
   set columns=120
   set lines=50
   set guifont=Sarasa\ Mono\ SC:h14
@@ -86,6 +90,7 @@ function! s:UiSettingWin()
   call s:UiSettingCommon()
   set guioptions-=T
   set guioptions-=m
+  set guioptions-=e
   set columns=120
   set lines=50
   set guifont=Sarasa\ Mono\ SC:h12
@@ -101,9 +106,9 @@ function! s:UiSettingLinux()
   call s:UiSettingCommon()
   set guioptions-=T
   set guioptions-=m
+  set guioptions-=e
   set columns=100
   set lines=32
-  "set guifont=Iosevka\ 11
   set guifont=Sarasa\ Mono\ SC\ 11
 endfunction
 
@@ -197,6 +202,21 @@ let g:Lf_PreviewResult = {
             \ 'Gtags': 1
             \}
 " 状态栏设置
+let s:statusSymbols = {
+      \ 'separator':    { 'left': "\u25e3", 'right': "\u25e5" },
+      \ 'subseparator': { 'left': "\u2571", 'right': "\u2572" },
+      \ }
+let g:lightline = {
+      \ 'colorscheme': 'dracula',
+      \ 'tabline': {'left': [['buffers']], 'right': [['close']]},
+      \ 'component_expand': {'buffers': 'lightline#bufferline#buffers'},
+      \ 'component_type': {'buffers': 'tabsel'},
+      \ 'separator':    s:statusSymbols.separator,
+      \ 'subseparator': s:statusSymbols.subseparator,
+      \ }
+set laststatus=2
+set showtabline=2
+set noshowmode
 " 主题
 syntax on
 colorscheme dracula

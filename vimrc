@@ -54,7 +54,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mcchrish/nnn.vim', { 'tag': 'v1.5' }
-Plug 'ycm-core/YouCompleteMe', { 'do': 'python install.py --clangd-completer --all' }
+Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --clangd-completer --all' }
 Plug 'tpope/vim-fugitive'
 
 if s:os == 0
@@ -109,7 +109,7 @@ function! s:UiSettingLinux()
   set guioptions-=e
   set columns=100
   set lines=32
-  set guifont=Sarasa\ Mono\ SC\ 11
+  set guifont=Sarasa\ Mono\ SC\ 12
 endfunction
 
 function! s:UiSettingNvim()
@@ -188,7 +188,7 @@ let g:nnn#action = {
 let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
-let g:Lf_StlSeparator = { 'left': "\u25e3", 'right': "\u25e5", 'font': "Sarasa Mono SC" }
+let g:Lf_StlSeparator = { 'left': "\ue0b8", 'right': "\ue0be", 'font': "Sarasa Mono SC" }
 let g:Lf_PreviewResult = {
             \ 'File': 1,
             \ 'Buffer': 1,
@@ -203,8 +203,8 @@ let g:Lf_PreviewResult = {
             \}
 " 状态栏设置
 let s:statusSymbols = {
-      \ 'separator':    { 'left': "\u25e3", 'right': "\u25e5" },
-      \ 'subseparator': { 'left': "\u2571", 'right': "\u2572" },
+      \ 'separator':    { 'left': "\ue0b8", 'right': "\ue0be" },
+      \ 'subseparator': { 'left': "\u2572", 'right': "\u2572" },
       \ }
 let g:lightline = {
       \ 'colorscheme': 'dracula',

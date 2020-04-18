@@ -10,6 +10,7 @@ set termencoding=utf-8
 set incsearch
 set hlsearch
 set ignorecase
+set smartcase
 
 """ 编辑设置
 set autoindent

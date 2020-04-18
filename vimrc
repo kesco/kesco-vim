@@ -42,7 +42,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons'
-Plug 'mcchrish/nnn.vim', { 'tag': 'v1.5' }
+Plug 'mcchrish/nnn.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 

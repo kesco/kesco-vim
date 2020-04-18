@@ -3,9 +3,7 @@
 """ Date: 2020-04-12
 
 " 文件管理器
-let $NNN_USE_EDITOR=1
-let $EDITOR='gvim' 
-let g:nnn#layout = { 'left': '~35%' }
+let g:nnn#layout = {'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug'}}
 " LeaderF模糊搜索
 let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_WindowPosition = 'popup'
@@ -36,6 +34,8 @@ let g:lightline = {
       \ 'separator':    s:statusSymbols.separator,
       \ 'subseparator': s:statusSymbols.subseparator,
       \ }
+let g:lightline#bufferline#enable_devicons = 1
+let g:lightline#bufferline#filename_modifier = ':p:.'
 set laststatus=2
 set showtabline=2
 set noshowmode

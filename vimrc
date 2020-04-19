@@ -39,22 +39,20 @@ endif
 
 call plug#begin()
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
+Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
-Plug 'mcchrish/nnn.vim'
-Plug 'tpope/vim-fugitive'
+Plug 'mcchrish/nnn.vim', { 'on': 'NnnPicker' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 if g:osType == 2
-  Plug 'Yggdroot/LeaderF', { 'do': '.\install.bat' }
+  Plug 'Yggdroot/LeaderF', { 'on': ['Leaderf', 'LeaderfFile'], 'do': '.\install.bat' }
 else
-  Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+  Plug 'Yggdroot/LeaderF', { 'on': ['Leaderf', 'LeaderfFile'], 'do': './install.sh' }
 endif
 
 " 语言支持
-Plug 'cespare/vim-toml'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': 'markdown'  }
 call plug#end()
 
 """ 包管理 End

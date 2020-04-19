@@ -142,6 +142,12 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+let g:coc_global_extensions = [
+      \'coc-pairs',
+      \'coc-vimlsp',
+      \'coc-json',
+      \]
+
 " VIMRC自动补全
 let g:markdown_fenced_languages = [
       \ 'vim',

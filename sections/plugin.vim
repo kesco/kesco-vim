@@ -22,22 +22,13 @@ let g:Lf_PreviewResult = {
             \ 'Gtags': 1
             \}
 " 状态栏设置
-let s:statusSymbols = {
-      \ 'separator':    { 'left': "\ue0b8", 'right': "\ue0be" },
-      \ 'subseparator': { 'left': "\u2572", 'right': "\u2572" },
-      \ }
-let g:lightline = {
-      \ 'colorscheme': 'dracula',
-      \ 'tabline': {'left': [['buffers']], 'right': [['close']]},
-      \ 'component_expand': {'buffers': 'lightline#bufferline#buffers'},
-      \ 'component_type': {'buffers': 'tabsel'},
-      \ 'separator':    s:statusSymbols.separator,
-      \ 'subseparator': s:statusSymbols.subseparator,
-      \ }
-let g:lightline#bufferline#enable_devicons = 1
-let g:lightline#bufferline#filename_modifier = ':p:.'
-set laststatus=2
-set showtabline=2
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_powerline_fonts = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
 set noshowmode
 
 " Markdown Preview

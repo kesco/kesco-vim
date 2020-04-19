@@ -14,7 +14,9 @@ let g:nnn#action = {
       \ '<c-x>': 'split',
       \ '<c-]>': 'vsplit' }
 " LeaderF
-let g:Lf_ShortcutF = "<leader>ff"
-noremap <silent><leader>ft :LeaderfFunction<CR>
-noremap <silent><leader>fb :LeaderfBuffer<CR>
-
+let g:Lf_ShortcutF = ""
+let g:Lf_ShortcutB = ""
+noremap <silent><leader>ff :Leaderf file<CR>
+noremap <silent><leader>ft :Leaderf function<CR>
+noremap <silent><leader>fb :Leaderf buffer<CR>
+noremap <silent><leader>fe :Leaderf mru<CR>

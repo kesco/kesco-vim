@@ -1,0 +1,5 @@
+{
+    "suggest.minTriggerInputLength": 2,
+    "diagnostic.errorSign": "×",
+    "diagnostic.warningSign": "•"
+}

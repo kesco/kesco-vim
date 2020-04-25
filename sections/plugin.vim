@@ -8,7 +8,11 @@ let g:nnn#layout = {'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug
 let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
-let g:Lf_StlSeparator = { 'left': "\ue0b8", 'right': "\ue0be", 'font': 'Iosevka' }
+if g:osType == 1
+  let g:Lf_StlSeparator = { 'left': "\ue0b8", 'right': "\ue0be", 'font': 'Iosevka Nerd Font' }
+else
+  let g:Lf_StlSeparator = { 'left': "\ue0b8", 'right': "\ue0be", 'font': 'Iosevka' }
+endif
 let g:Lf_PreviewResult = {
             \ 'File': 1,
             \ 'Buffer': 1,

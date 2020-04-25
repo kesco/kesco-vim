@@ -25,6 +25,13 @@ set backspace=eol,start,indent
 set noswapfile
 """ UI设置
 set number
+set relativenumber
+augroup showRelativeNumber
+  autocmd!
+  autocmd InsertEnter * :set norelativenumber number
+  autocmd InsertLeave * :set relativenumber
+augroup end
+
 set sidescroll=1
 " 关闭声音和闪屏
 set vb t_vb=

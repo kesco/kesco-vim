@@ -43,6 +43,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mcchrish/nnn.vim', { 'on': 'NnnPicker' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
 
 if g:osType == 2
   Plug 'Yggdroot/LeaderF', { 'on': ['Leaderf', 'LeaderfFile'], 'do': '.\install.bat' }
@@ -68,3 +69,4 @@ endfunction
 for file in split(glob(s:TraverseDir('sections/*.vim')), '\n')
   exe 'source' file
 endfor
+

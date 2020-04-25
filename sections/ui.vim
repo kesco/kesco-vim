@@ -22,7 +22,7 @@ if g:isInTerminal == 0
     elseif g:osType == 1
       set columns=120
       set lines=50
-      set guifont=Sarasa\ Mono\ SC:h14
+      set guifont=Iosevka\ Nerd\ Font:h14
     else
       set columns=120
       set lines=50

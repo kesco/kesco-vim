@@ -38,3 +38,6 @@ set noshowmode
 " Markdown Preview
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 1
+
+" Gitgutter
+

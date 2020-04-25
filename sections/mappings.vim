@@ -5,10 +5,16 @@
 " 修改Leader键
 let mapleader = "'"
 
+" Windows
+nnoremap <C-j> <C-W>j                                                                                                                             
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+
 " 文件浏览器
 let g:nnn#set_default_mappings = 0
-noremap <silent><leader>nn :NnnPicker<CR>
-noremap <silent><leader>nc :NnnPicker '%:p:h'<CR>
+nnoremap <silent><leader>nn :NnnPicker<CR>
+nnoremap <silent><leader>nc :NnnPicker '%:p:h'<CR>
 let g:nnn#action = {
       \ '<c-t>': 'tab split',
       \ '<c-x>': 'split',
@@ -16,7 +22,12 @@ let g:nnn#action = {
 " LeaderF
 let g:Lf_ShortcutF = ""
 let g:Lf_ShortcutB = ""
-noremap <silent><leader>ff :Leaderf file<CR>
-noremap <silent><leader>ft :Leaderf function<CR>
-noremap <silent><leader>fb :Leaderf buffer<CR>
-noremap <silent><leader>fe :Leaderf mru<CR>
+nnoremap <silent><leader>ff :Leaderf file<CR>
+nnoremap <silent><leader>ft :Leaderf function<CR>
+nnoremap <silent><leader>fb :Leaderf buffer<CR>
+nnoremap <silent><leader>fe :Leaderf mru<CR>
+
+" Git包括几个插件fugitive、gitgutter和gv
+nnoremap <silent><leader>gl :GV<CR>
+nnoremap <silent><leader>gb :Git blame<CR>
+

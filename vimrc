@@ -54,6 +54,11 @@ endif
 " 语言支持
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': 'markdown'  }
+
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 call plug#end()
 
 """ 包管理 End

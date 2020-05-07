@@ -26,7 +26,7 @@ nnoremap <silent><leader>ff :Leaderf file<CR>
 nnoremap <silent><leader>ft :Leaderf function<CR>
 nnoremap <silent><leader>fb :Leaderf buffer<CR>
 nnoremap <silent><leader>fe :Leaderf mru<CR>
-vnoremap <silent><leader>fg :<C-U><C-R>=printf("Leaderf rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
+vnoremap <silent><leader>fg :<C-U><C-R>=printf("Leaderf rg -F -e %s ", leaderf#Rg#visual())<CR>
 nnoremap <silent><leader>fr :Leaderf rg --recall<CR>
 
 " Git包括几个插件fugitive、gitgutter和gv

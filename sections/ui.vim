@@ -36,6 +36,11 @@ else
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
+    " 终端下不同模式显示不同的光标
+    let &t_ti.="\e[1 q"
+    let &t_SI.="\e[5 q"
+    let &t_EI.="\e[1 q"
+    let &t_te.="\e[0 q"
     highlight VertSplit cterm=NONE ctermfg=238 ctermbg=NONE
   else
     set termguicolors

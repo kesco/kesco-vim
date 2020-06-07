@@ -9,3 +9,14 @@ augroup VimFileTypeSetting
   autocmd FileType vimrc setlocal nowrap
   autocmd FileType vim setlocal nowrap
 augroup end
+
+augroup CppFileTypeSetting
+  autocmd!
+  autocmd FileType c setlocal nowrap
+  autocmd FileType cpp setlocal nowrap
+augroup end
+
+augroup ProtoFileTypeSetting
+  autocmd!
+  autocmd FileType proto setlocal nowrap
+augroup end
